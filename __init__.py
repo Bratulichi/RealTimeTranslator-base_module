@@ -25,3 +25,7 @@ from .openapi import (  # noqa: F401
 #     current_timezone,
 #     timezone_to_utc,
 # )
+
+from .utils import (  # noqa: F401
+    get_app_version,
+)

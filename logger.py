@@ -58,17 +58,17 @@ class StdoutFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         message = super().format(record)
-        declarer = record.__dict__.get("declarer", record.name)
+        declarer = record.__dict__.get('declarer', record.name)
         level_name = record.levelname
-        res = f"[{declarer}] {level_name}: {message}"
+        res = f'[{declarer}] {level_name}: {message}'
 
         if data := record.__dict__.get("data", {}):
             if isinstance(data, dict):
-                data["trace_id"] = FastAPILoggerAdapter.TRACE_ID.get()
-                data["request_id"] = FastAPILoggerAdapter.REQUEST_ID.get()
-            res += f" -> {data}"
+                data['trace_id'] = FastAPILoggerAdapter.TRACE_ID.get()
+                data['request_id'] = FastAPILoggerAdapter.REQUEST_ID.get()
+            res += f' -> {data}'
 
-        return f"{ColorPicker.pick(record.levelno)}{res}{ColorPicker.clear}"
+        return f'{ColorPicker.pick(record.levelno).value}{res}{ColorPicker.clear.value}'
 
 
 if _with_logstash:
