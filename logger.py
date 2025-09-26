@@ -1,5 +1,3 @@
-"""Логгер для FastAPI - простая адаптация."""
-
 import contextvars
 import enum
 import json
